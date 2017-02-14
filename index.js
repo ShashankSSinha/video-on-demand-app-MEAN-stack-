@@ -18,7 +18,8 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 8080);
+app.set('ip', process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
  
 app.get('/viewed', (req, res) => {
   const sessionToken = req.query.sessionToken;
@@ -76,6 +77,6 @@ app.delete('/clear', (req, res) => {
   });
 });
 
-app.listen(app.get('port'), () => {
-  console.log('Express server listening on port ' + app.get('port'));
+app.listen(app.get('port'), app.get('ip'), () => {
+  console.log(`Express server listening on port: ${app.get('port')}`);
 });
