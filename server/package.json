@@ -1,0 +1,13 @@
+{
+  "name": "videoServer",
+  "author": "Shashank S Sinha",
+  "description": "Watched video server backed by MongoDB",
+  "version": "0.1.0",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "cors": "^2.8.1",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.2"
+  }
+}

@@ -1,0 +1,52 @@
+<html ng-app="videoApp">
+  <head>
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-aria.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+	  <div ng-controller="videoController">
+      <md-toolbar class="md-hue-1" style="min-height:40px">
+        <b><span>All Videos</span></b>
+      </md-toolbar>
+	    <div class="scroll-container-1">
+        <md-content layout-xs="column" layout="row">
+          <md-card  md-colspan-sm="1" ng-repeat="video in videos"  ng-keydown="onKeydown(video, $event)" class="repeated-item md-image-no-fill" ng-click="playVideo(video.contents[0].url); saveVideo(video)">
+           <img ng-src='{{video.images[0].url}}' />
+           <md-tooltip>{{video.title}}</md-tooltip>
+          </md-card>
+        </md-content>
+	    </div>
+
+      <md-toolbar class="md-hue-1">
+        <div class="md-toolbar-tools">
+          <h2 flex md-truncate>Watched Videos</h2>
+          <span flex></span>
+          <md-button ng-click="clearHistory()">
+            Clear History
+          </md-button>
+        </div>  
+      </md-toolbar>
+      <div class="scroll-container-2">
+       <md-content layout-xs="column" layout="row">
+        <md-card  md-colspan-sm="1" ng-repeat="viewedVideo in viewedVideos" class="repeated-item md-image-no-fill" ng-click="playVideo(viewedVideo.videoPlayUrl)">
+         <img ng-src='{{viewedVideo.thumbnailUrl}}' />
+         <md-tooltip md-direction="top">{{viewedVideo.title}}</md-tooltip>
+        </md-card>
+       </md-content>   
+      </div>
+	    
+	    <video width="320" height="240" ng-hide="true" controls autoplay="true">
+    		<source ng-src="{{playUrl}}" type="video/mp4">
+		  </video>
+	 </div>
+  </body> 
+</html> 
