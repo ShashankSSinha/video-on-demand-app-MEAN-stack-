@@ -3,7 +3,7 @@
   "author": "Shashank S Sinha",
   "description": "Watched video server backed by MongoDB",
   "version": "0.1.0",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "body-parser": "^1.16.1",
     "cors": "^2.8.1",
