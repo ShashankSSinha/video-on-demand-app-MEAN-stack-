@@ -26,7 +26,7 @@ app.controller('videoController', ['$scope', '$http', '$sce', '$sessionStorage',
     $scope.getViewed = () => {
         const sessionToken = $sessionStorage.sessionToken;
 
-        $http.get('http://127.0.0.1:8080/viewed', {params: {sessionToken}}).then(response => {
+        $http.get('http://localhost:3000/viewed', {params: {sessionToken}}).then(response => {
             $scope.viewedVideos = response.data;
         });    
     };
@@ -53,7 +53,7 @@ app.controller('videoController', ['$scope', '$http', '$sce', '$sessionStorage',
     $scope.saveVideo = video => {
         const sessionToken = $sessionStorage.sessionToken;
 
-        $http.post('http://127.0.0.1:8080/save', {video, sessionToken}).then(response => {
+        $http.post('http://localhost:3000/save', {video, sessionToken}).then(response => {
             console.log('video-saved-for-current-session');
         });
     };
@@ -61,7 +61,7 @@ app.controller('videoController', ['$scope', '$http', '$sce', '$sessionStorage',
     $scope.clearHistory = () => {
         const sessionToken = $sessionStorage.sessionToken;
 
-        $http.delete('http://127.0.0.1:8080/clear', {params: {sessionToken}}).then(response => {
+        $http.delete('http://localhost:3000/clear', {params: {sessionToken}}).then(response => {
             console.log('watched-video-history-cleared');
             $scope.getViewed();
         });    
