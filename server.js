@@ -4,7 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
  
 //mongoose.connect('mongodb://localhost/videos');
-mongoose.connect('mongodb://admin:u_RNK7zqRFys@127.0.0.1:27017/vodmeandemo');
+mongoose.connect('mongodb://127.0.0.1:27017/vodtest');
 
 // Creating a schema
 const videoSchema = new mongoose.Schema({
