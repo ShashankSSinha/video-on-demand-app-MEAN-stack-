@@ -9,5 +9,9 @@
     "cors": "^2.8.1",
     "express": "^4.14.1",
     "mongoose": "^4.8.2"
+  },
+  "repository": { 
+    "type" : "git",
+    "url" : "https://github.com/ShashankSSinha/video-on-demand-app-MEAN-stack-.git"
   }
 }
