@@ -77,6 +77,8 @@ app.delete('/clear', (req, res) => {
   });
 });
 
+app.use(express.static(__dirname));
+
 app.listen(app.get('port'), () => {
   console.log(`Express video server listening on port ${app.get('port')}`);
 });
