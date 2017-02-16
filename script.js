@@ -1,7 +1,7 @@
 const app = angular.module('videoApp', ['ngMaterial', 'ngStorage']);
 
-app.controller('videoController', ['$scope', '$http', '$sce', '$sessionStorage', 
-    ($scope, $http, $sce, $sessionStorage) => {
+app.controller('videoController', ['$scope', '$http', '$sce', '$sessionStorage', '$location',
+    ($scope, $http, $sce, $sessionStorage, $location) => {
 
     $scope.genSessionToken = length => {
         let token = '_';
@@ -26,7 +26,7 @@ app.controller('videoController', ['$scope', '$http', '$sce', '$sessionStorage',
     $scope.getViewed = () => {
         const sessionToken = $sessionStorage.sessionToken;
 
-        $http.get('http://localhost:3000/viewed', {params: {sessionToken}}).then(response => {
+        $http.get($location.protocol() + '://'+ $location.host() + ':' +  $location.port() + '/viewed', {params: {sessionToken}}).then(response => {
             $scope.viewedVideos = response.data;
         });    
     };
@@ -53,7 +53,7 @@ app.controller('videoController', ['$scope', '$http', '$sce', '$sessionStorage',
     $scope.saveVideo = video => {
         const sessionToken = $sessionStorage.sessionToken;
 
-        $http.post('http://localhost:3000/save', {video, sessionToken}).then(response => {
+        $http.post($location.protocol() + '://'+ $location.host() + ':' +  $location.port() + '/save', {video, sessionToken}).then(response => {
             console.log('video-saved-for-current-session');
         });
     };
@@ -61,7 +61,7 @@ app.controller('videoController', ['$scope', '$http', '$sce', '$sessionStorage',
     $scope.clearHistory = () => {
         const sessionToken = $sessionStorage.sessionToken;
 
-        $http.delete('http://localhost:3000/clear', {params: {sessionToken}}).then(response => {
+        $http.delete($location.protocol() + '://'+ $location.host() + ':' +  $location.port() + '/clear', {params: {sessionToken}}).then(response => {
             console.log('watched-video-history-cleared');
             $scope.getViewed();
         });    
