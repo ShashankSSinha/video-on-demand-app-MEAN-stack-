@@ -57,8 +57,7 @@ app.post('/save', (req, res) => {
   	  if(error) {
   		  console.log(error);
         return;
-      }		  
-      console.log(result);  	  
+      }		    	  
   });
 });
 
@@ -73,7 +72,6 @@ app.delete('/clear', (req, res) => {
         console.log(error);
         return;
       }     
-      console.log(result); 
       res.send(result);
   });
 });
