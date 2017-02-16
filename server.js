@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const cors = require('cors');
 const mongoose = require('mongoose');
  
@@ -78,8 +79,10 @@ app.delete('/clear', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-  res.sendFile('./index.html', {root: __dirname});
+  res.sendFile('./public/index.html', {root: __dirname});
 });
+
+app.use(express.static(path.join(__dirname, './public')));
 
 app.listen(app.get('port'), () => {
   console.log(`Express video server listening on port ${app.get('port')}`);
