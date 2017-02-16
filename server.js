@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
  
-mongoose.connect('mongodb://localhost/videos');
+// mongoose.connect('mongodb://localhost/videos');
+mongoose.connect('mongodb://shashank:sinha@ds153709.mlab.com:53709/vodmeandb');
 
 // Creating a schema
 const videoSchema = new mongoose.Schema({
