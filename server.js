@@ -78,7 +78,7 @@ app.delete('/clear', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-  res.sendFile('./index.html');
+  res.sendFile('./index.html', {root: __dirname});
 });
 
 app.listen(app.get('port'), () => {
